@@ -11,27 +11,25 @@ class HelloWorld {
     	synchronized(this)
     	{
     		for (int i = 0; i < n; i++) {
-            System.out.print("Hello");
+            System.out.print("Hello"+i);
             this.notify();
             this.wait();
     		}
     	}
-        
     }
 
     public void world() throws InterruptedException{
     	synchronized(this)
     	{
     		for (int i = 0; i < n; i++) {
-            System.out.println("World!");
+            System.out.println("World!"+i);
             this.notify();
+            if(i<n-1)
             this.wait();
-            
     		}
     	}
-        
     }
-
+    
 }
 
 class PrintWorld implements Runnable{
